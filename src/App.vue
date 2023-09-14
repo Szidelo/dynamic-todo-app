@@ -1,5 +1,5 @@
 <template>
-  <the-header title="My To Do App"></the-header>
+  <the-header title="ToDo App"></the-header>
   <!-- <stored-tasks></stored-tasks> -->
   <the-nav></the-nav>
 </template>

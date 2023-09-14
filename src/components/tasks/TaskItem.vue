@@ -8,7 +8,9 @@
             </div>
             <div class="card-content">
                 <div>
-                    <h2>{{ taskTitle }} {{ isUrgent ? '(Urgent Task)' : '' }}</h2>
+                    <h2>
+                        {{ taskTitle }} {{ isUrgent ? "(Urgent Task)" : "" }}
+                    </h2>
                     <strong>{{ userName }}</strong>
                     <p>
                         {{ taskDescription }}
@@ -27,9 +29,18 @@
                 </base-card>
 
                 <div class="btn-container">
-                    <base-button @click="toggleVisibility">Show Contact</base-button>
-                    <base-button @click="toggleUrgency">Mark As Urgent</base-button>
-                    <base-button @click="removeTask" mode="red-btn">Remove</base-button>
+                    <base-button @click="toggleVisibility"
+                        >{{ isVisible ? "Hide" : "Show" }} Contact</base-button
+                    >
+                    <base-button @click="toggleUrgency"
+                        >{{ isUrgent ? "Unmark" : "Mark" }} As
+                        Urgent</base-button
+                    >
+                    <base-button
+                        @click="removeTask"
+                        mode="red-btn"
+                        >Remove</base-button
+                    >
                 </div>
             </div>
         </base-card>
@@ -41,62 +52,61 @@
         props: {
             taskId: {
                 type: String,
-                required: true
+                required: true,
             },
             taskTitle: {
                 type: String,
-                required: true
+                required: true,
             },
             userName: {
                 type: String,
-                required: true
+                required: true,
             },
             userAvatar: {
                 type: String,
-                required: true
+                required: true,
             },
             taskDescription: {
                 type: String,
-                required: true
+                required: true,
             },
             userPhone: {
                 type: String,
-                required: true
+                required: true,
             },
             userEmail: {
                 type: String,
-                required: true
+                required: true,
             },
             isUrgent: {
                 type: Boolean,
                 required: false,
-                default: false
-            }
+                default: false,
+            },
         },
 
-        emits: ['toggle-urgency', 'remove-task'],
+        emits: ["toggle-urgency", "remove-task"],
 
         data() {
             return {
                 isVisible: false,
-                
-            }
+            };
         },
 
         methods: {
             toggleVisibility() {
-                this.isVisible = !this.isVisible
-                console.log(this.isVisible)
+                this.isVisible = !this.isVisible;
+                console.log(this.isVisible);
             },
 
             toggleUrgency() {
-                this.$emit('toggle-urgency', this.taskId)
+                this.$emit("toggle-urgency", this.taskId);
             },
 
             removeTask() {
-                this.$emit('remove-task', this.taskId)
-            }
-        }
+                this.$emit("remove-task", this.taskId);
+            },
+        },
     };
 </script>
 
@@ -127,6 +137,7 @@
         padding: 10px;
         width: 98%;
         border-bottom: 1px solid #353b57;
+        margin-top: 10px;
     }
 
     .card-content {
@@ -136,7 +147,28 @@
     .btn-container {
         display: flex;
         justify-content: flex-start;
-        max-width: 400px;
+        width: max-content;
         gap: 10px;
+    }
+
+    @media (max-width: 590px) {
+        .img-wrapper {
+            height: 250px;
+            width: 100%;
+            border-radius: 10px;
+            background-size: cover;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .btn-container {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 390px) {
+        .btn-container {
+            flex-direction: column;
+        }
     }
 </style>

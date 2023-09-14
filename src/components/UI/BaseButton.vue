@@ -39,4 +39,10 @@ button:hover {
 .light-btn:hover {
     color: #fff
 }
+
+@media (max-width: 590px) {
+        button {
+            width: 100%;
+        }
+    }
 </style>

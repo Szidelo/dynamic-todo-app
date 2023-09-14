@@ -13,7 +13,8 @@
             :user-phone="task.phone"
             :user-email="task.mail"
             @toggle-urgency="toggleUrgency(task.id)"
-            @remove-task="removeTask(task.id)"></task-item>
+            @remove-task="removeTask(task.id)">
+        </task-item>
     </ul>
 </template>
 
@@ -24,25 +25,27 @@
             TaskItem,
         },
 
-        inject: ['listOfTasks'],
+        inject: ["listOfTasks"],
 
         data() {
-            return {
-
-            };
+            return {};
         },
 
         methods: {
             toggleUrgency(taskId) {
-                const currentTask = this.listOfTasks.find(task => task.id === taskId);
-                currentTask.isUrgent = !currentTask.isUrgent
+                const currentTask = this.listOfTasks.find(
+                    (task) => task.id === taskId
+                );
+                currentTask.isUrgent = !currentTask.isUrgent;
             },
 
             removeTask(taskId) {
-                const index = this.listOfTasks.findIndex(task => task.id === taskId)
-                this.listOfTasks.splice(index, 1)
-            }
-        }
+                const index = this.listOfTasks.findIndex(
+                    (task) => task.id === taskId
+                );
+                this.listOfTasks.splice(index, 1);
+            },
+        },
     };
 </script>
 
@@ -52,5 +55,12 @@
         margin: 0 auto;
         padding: 0;
         width: 70%;
+        max-width: 1200px;
+    }
+
+    @media (max-width: 876px) {
+        ul {
+            width: 100%;
+        }
     }
 </style>

@@ -121,4 +121,21 @@
         font: inherit;
         padding: 0.15rem;
     }
+
+    @media (max-width: 590px) {
+        .form-container {
+            width: 100%;
+            padding: 0;
+        }
+
+        label {
+            font-size: 1em;
+        }
+    }
+
+    @media (max-width: 390px) {
+        div {
+            flex-direction: column;
+        }
+    }
 </style>

@@ -22,4 +22,10 @@ header {
     width: 100%;
 }
 
+@media (max-width: 390px) {
+    header {
+        padding: 20px 0;
+    }
+}
+
 </style>
