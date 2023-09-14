@@ -85,13 +85,17 @@
                     enteredEmail
                 );
 
-                enteredUserName = ''
-                enteredTaskTitle = ''
-                enteredLink = ''
-                enteredPhone = ''
-                enteredEmail = ''
-                enteredDescription = ''
+                this.clearInputs()
             },
+
+            clearInputs () {
+                this.$refs.userInput.value = '';
+                this.$refs.taskInput.value = '';
+                this.$refs.linkInput.value = '';
+                this.$refs.phoneInput.value = '';
+                this.$refs.emailInput.value = '';
+                this.$refs.descriptionInput.value = '';
+            }
         },
     };
 </script>
