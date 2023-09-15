@@ -1,6 +1,9 @@
 <template>
     <div class="form-container">
-        <base-error-message v-if="inputIsInvalid" @close="confirmErrorMessage" title="Invalid Inputs">
+        <base-error-message
+            v-if="inputIsInvalid"
+            @close="confirmErrorMessage"
+            title="Invalid Inputs">
             <template v-slot:default>
                 <p>At least one of the inputs is empty</p>
                 <p>Please fill all inputs!</p>
@@ -72,7 +75,7 @@
 
         data() {
             return {
-                inputIsInvalid: false
+                inputIsInvalid: false,
             };
         },
 
@@ -85,9 +88,16 @@
                 let enteredEmail = this.$refs.emailInput.value;
                 let enteredDescription = this.$refs.descriptionInput.value;
 
-                if(enteredUserName === '' || enteredTaskTitle === '' || enteredLink === '' || enteredPhone === '' || enteredEmail === '' || enteredDescription === '') {
-                    this.inputIsInvalid = true
-                    return
+                if (
+                    enteredUserName === "" ||
+                    enteredTaskTitle === "" ||
+                    enteredLink === "" ||
+                    enteredPhone === "" ||
+                    enteredEmail === "" ||
+                    enteredDescription === ""
+                ) {
+                    this.inputIsInvalid = true;
+                    return;
                 }
 
                 this.addNewTask(
@@ -112,8 +122,8 @@
             },
 
             confirmErrorMessage() {
-                this.inputIsInvalid = false
-            }
+                this.inputIsInvalid = false;
+            },
         },
     };
 </script>
