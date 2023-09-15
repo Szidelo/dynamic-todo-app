@@ -16,6 +16,7 @@
     <keep-alive>
         <component :is="selectedTab"></component>
     </keep-alive>
+
 </template>
 
 <script>
@@ -38,16 +39,15 @@
         },
 
         provide() {
-            return{
+            return {
                 listOfTasks: this.listOfTasks,
                 addNewTask: this.addNewTask,
-            }
-            
+            };
         },
 
         data() {
             return {
-                selectedTab: "stored-tasks",
+                selectedTab: "add-task",
                 listOfTasks: [
                     {
                         id: "1",
@@ -89,14 +89,13 @@
                     isUrgent: false,
                     avatarUrl,
                     phone,
-                    mail
-                }
+                    mail,
+                };
 
                 this.listOfTasks.unshift(newTask);
 
-                this.selectedTab = 'stored-tasks'
-
-            }
+                this.selectedTab = "stored-tasks";
+            },
         },
     };
 </script>

@@ -1,5 +1,12 @@
 <template>
     <div class="form-container">
+        <base-error-message v-if="inputIsInvalid" @close="confirmErrorMessage" title="Invalid Inputs">
+            <template v-slot:default>
+                <p>At least one of the inputs is empty</p>
+                <p>Please fill all inputs!</p>
+            </template>
+            <template v-slot:action> </template>
+        </base-error-message>
         <base-card>
             <form @submit.prevent="submitData">
                 <div>
@@ -64,7 +71,9 @@
         inject: ["addNewTask"],
 
         data() {
-            return {};
+            return {
+                inputIsInvalid: false
+            };
         },
 
         methods: {
@@ -76,6 +85,11 @@
                 let enteredEmail = this.$refs.emailInput.value;
                 let enteredDescription = this.$refs.descriptionInput.value;
 
+                if(enteredUserName === '' || enteredTaskTitle === '' || enteredLink === '' || enteredPhone === '' || enteredEmail === '' || enteredDescription === '') {
+                    this.inputIsInvalid = true
+                    return
+                }
+
                 this.addNewTask(
                     enteredTaskTitle,
                     enteredUserName,
@@ -85,16 +99,20 @@
                     enteredEmail
                 );
 
-                this.clearInputs()
+                this.clearInputs();
             },
 
-            clearInputs () {
-                this.$refs.userInput.value = '';
-                this.$refs.taskInput.value = '';
-                this.$refs.linkInput.value = '';
-                this.$refs.phoneInput.value = '';
-                this.$refs.emailInput.value = '';
-                this.$refs.descriptionInput.value = '';
+            clearInputs() {
+                this.$refs.userInput.value = "";
+                this.$refs.taskInput.value = "";
+                this.$refs.linkInput.value = "";
+                this.$refs.phoneInput.value = "";
+                this.$refs.emailInput.value = "";
+                this.$refs.descriptionInput.value = "";
+            },
+
+            confirmErrorMessage() {
+                this.inputIsInvalid = false
             }
         },
     };
