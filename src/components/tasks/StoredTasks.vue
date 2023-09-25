@@ -1,4 +1,10 @@
 <template>
+    <base-confirmation
+        v-if="isModalVisible"
+        @confirm="confirmRemove"
+        @cancel="cancelRemove">
+    </base-confirmation>
+
     <ul>
         <task-item
             v-for="task in listOfTasks"
@@ -28,7 +34,11 @@
         inject: ["listOfTasks"],
 
         data() {
-            return {};
+            return {
+                isModalVisible: false,
+                isConfirmed: false,
+                taskIdToRemove: "",
+            };
         },
 
         methods: {
@@ -39,11 +49,36 @@
                 currentTask.isUrgent = !currentTask.isUrgent;
             },
 
+            cancelRemove() {
+                if (this.isConfirmed) {
+                    this.isConfirmed = false;
+                    this.isModalVisible = false;
+                }
+                this.isModalVisible = false;
+            },
+
+            confirmRemove() {
+                this.isConfirmed = true;
+
+                if (this.isConfirmed) {
+                    const index = this.listOfTasks.findIndex(
+                        (task) => task.id === this.taskIdToRemove
+                    );
+
+                    if (index !== -1) {
+                        this.listOfTasks.splice(index, 1);
+                        this.isConfirmed = false;
+                    }
+                }
+
+                this.isModalVisible = false;
+            },
+
             removeTask(taskId) {
-                const index = this.listOfTasks.findIndex(
-                    (task) => task.id === taskId
-                );
-                this.listOfTasks.splice(index, 1);
+                this.isModalVisible = true;
+                this.taskIdToRemove = taskId;
+                console.log(this.taskIdToRemove);
+                console.log(this.isConfirmed);
             },
         },
     };

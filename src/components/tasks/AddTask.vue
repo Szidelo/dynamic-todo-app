@@ -149,9 +149,14 @@
         margin-right: 20px;
     }
 
-    input {
+    input, textarea {
+        width: 158px;
         font: inherit;
         padding: 0.15rem;
+    }
+
+    textarea {
+        resize: none;
     }
 
     @media (max-width: 590px) {

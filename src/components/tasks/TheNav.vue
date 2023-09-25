@@ -47,7 +47,7 @@
 
         data() {
             return {
-                selectedTab: "add-task",
+                selectedTab: "stored-tasks",
                 listOfTasks: [
                     {
                         id: "1",
