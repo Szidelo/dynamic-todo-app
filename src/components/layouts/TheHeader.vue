@@ -15,17 +15,11 @@ export default {
 header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     margin: 0 auto 80px;
-    padding: 20px;
+    padding: 20px 0;
     background-color: #020d35;
     color: #fff;
     text-align: center;
     width: 100%;
-}
-
-@media (max-width: 390px) {
-    header {
-        padding: 20px 0;
-    }
 }
 
 </style>
