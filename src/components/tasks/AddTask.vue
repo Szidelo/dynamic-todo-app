@@ -8,7 +8,7 @@
                 <p>At least one of the inputs is empty</p>
                 <p>Please fill all inputs!</p>
             </template>
-            <template v-slot:action> </template>
+            <template v-slot:action></template>
         </base-error-message>
         <base-card>
             <form @submit.prevent="submitData">
@@ -100,7 +100,7 @@
                     return;
                 }
 
-                this.addNewTask(
+                this.addNewTask( // injected from TheNav component
                     enteredTaskTitle,
                     enteredUserName,
                     enteredDescription,

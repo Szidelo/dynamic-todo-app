@@ -36,7 +36,6 @@
         data() {
             return {
                 isModalVisible: false,
-                isConfirmed: false,
                 taskIdToRemove: "",
             };
         },
@@ -50,25 +49,16 @@
             },
 
             cancelRemove() {
-                if (this.isConfirmed) {
-                    this.isConfirmed = false;
-                    this.isModalVisible = false;
-                }
                 this.isModalVisible = false;
             },
 
             confirmRemove() {
-                this.isConfirmed = true;
+                const index = this.listOfTasks.findIndex(
+                    (task) => task.id === this.taskIdToRemove
+                );
 
-                if (this.isConfirmed) {
-                    const index = this.listOfTasks.findIndex(
-                        (task) => task.id === this.taskIdToRemove
-                    );
-
-                    if (index !== -1) {
-                        this.listOfTasks.splice(index, 1);
-                        this.isConfirmed = false;
-                    }
+                if (index !== -1) {
+                    this.listOfTasks.splice(index, 1);
                 }
 
                 this.isModalVisible = false;
@@ -78,7 +68,6 @@
                 this.isModalVisible = true;
                 this.taskIdToRemove = taskId;
                 console.log(this.taskIdToRemove);
-                console.log(this.isConfirmed);
             },
         },
     };

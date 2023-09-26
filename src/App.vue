@@ -1,18 +1,15 @@
 <template>
   <the-header title="ToDo App"></the-header>
-  <!-- <stored-tasks></stored-tasks> -->
   <the-nav></the-nav>
 </template>
 
 <script>
 import TheHeader from './components/layouts/TheHeader';
 import TheNav from './components/tasks/TheNav'
-// import StoredTasks from './components/tasks/StoredTasks'
 export default {
   components: {
     TheHeader,
     TheNav,
-    // StoredTasks
   }
 }
 </script>
